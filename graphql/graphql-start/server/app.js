@@ -12,7 +12,7 @@ const PORT = 3005;
 dotenv.config();
 
 //mongoose.connect(process.env.DB, {  useUnifiedTopology: true, useNewUrlParser: true } )
-mongoose.connect(process.env.DB_CONNECT, {  useUnifiedTopology: true, useNewUrlParser: true } )
+mongoose.connect('mongodb+srv://den:den123@cluster0.avbsr.mongodb.net/db?retryWrites=true&w=majority', {  useUnifiedTopology: true, useNewUrlParser: true } )
 
 
 
