@@ -11,7 +11,11 @@ export default () => (
                       node {
                         title
                         published
-                   
+                        banner {
+                            fluid {
+                                src
+                            }
+                        }
                       }
                     }
                   }
@@ -23,7 +27,11 @@ export default () => (
                      }
                  }) => (
             edges.map(({ node }) => (
-                <div>{node.title}</div>
+                <>
+                    <div>{node.title}</div>
+                    <div>{node.published}</div>
+                    <img src={node.banner.fluid.src} alt=""/>
+                </>
             ))
         )}
     />

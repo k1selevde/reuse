@@ -18,7 +18,6 @@ const Movies  = () => (
             console.log('data', data)*/
             if (loading) return <p>Loading...</p>;
             if (error) return <p>Error :(</p>;
-
             return (
                 <ul key='allUsers'>
                     {data.movies.map(movie => (<div>{movie.title}</div>))}

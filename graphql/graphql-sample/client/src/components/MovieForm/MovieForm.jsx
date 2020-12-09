@@ -20,40 +20,46 @@ const NewMovie = (props) => (
                 if (loading) return <p>Loading...</p>
                 if (error) return <p>Error...</p>
                 let title,genre,watched,rate,directorId
+                console.log(data)
                 return (
-                    <form onSubmit={e => {
-                        e.preventDefault()
-                        addMovie({ variables: {
-                            title: title.value,
-                            genre: genre.value,
-                            directorId: Number(directorId.value),
-                            rate:     Number(rate.value),
-                            watched: Boolean(watched.value)
-                        }})
-                    }}>
-                        <input
-                            type='text'
-                            ref={ node =>  title = node }
-                        />
-                        <input
-                            type='text'
-                            ref={ node =>  genre = node }
-                        />
-                        <input
-                            type='text'
-                            ref={ node =>  directorId = node }
-                        />
-                        <input
-                            type='checkbox'
-                            ref={ node =>  watched = node }
-                        />
-                        <input
-                            type="text"
-                            ref={ node =>  rate = node }
-                        />
-                        <button type='submit'>ADD</button>
+                    <>
+                        <h2>Current: </h2>
+                        <form onSubmit={e => {
+                            e.preventDefault()
+                            addMovie({
+                                variables: {
+                                    title: title.value,
+                                    genre: genre.value,
+                                    directorId: Number(directorId.value),
+                                    rate: Number(rate.value),
+                                    watched: Boolean(watched.value)
+                                }
+                            })
+                        }}>
+                            <input
+                                type='text'
+                                ref={node => title = node}
+                            />
+                            <input
+                                type='text'
+                                ref={node => genre = node}
+                            />
+                            <input
+                                type='text'
+                                ref={node => directorId = node}
+                            />
+                            <input
+                                type='checkbox'
+                                ref={node => watched = node}
+                            />
+                            <input
+                                type="text"
+                                ref={node => rate = node}
+                            />
+                            <button type='submit'>ADD</button>
 
-                    </form>
+                        </form>
+                    </>
                 )
             }
         }

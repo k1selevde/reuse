@@ -50,7 +50,10 @@ class MoviesTable extends React.Component {
 
         const { classes, data = {} } = this.props;
 
+        console.log(this.props.data);
+
         const { movies = [] } = data;
+
 
         return (
             <>

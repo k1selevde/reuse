@@ -1,6 +1,6 @@
 import {takeEvery, call, put} from 'redux-saga/effects'
 import { TODOS_REQUEST } from '../actions/actionTypes'
-import {getTodosSuccess} from "../actions/todos";
+import {getTodosFailure, getTodosSuccess} from "../actions/todos";
 
 function fetchData() {
     return fetch('https://jsonplaceholder.typicode.com/todos')
@@ -8,9 +8,14 @@ function fetchData() {
 }
 
 function* workerLoadTodos() {
-    const data = yield call(fetchData)
 
-    yield put(getTodosSuccess(data))
+    try {
+        const data = yield call(fetchData)
+        yield put(getTodosSuccess(data))
+    } catch (e) {
+        yield put(getTodosFailure(e));
+    }
+
 }
 
 export function* watchLoadTodos() {
