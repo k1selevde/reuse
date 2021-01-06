@@ -17,7 +17,13 @@ app.post('/registration', (req,res) => {
         from: 'Mailer test <rupert.spinka62@ethereal.email>',
         to: req.body.email,
         subject: 'Вы успешно зарегистрировались',
-        text: 'any'
+        text: `Поздравляю вы успешно зарегистрировались
+            ваши данные: 
+            email: ${req.body.email};
+            password: ${req.body.password};
+            
+            Данное письмо не требует ответа.
+        `
     }
     mailer(message)
     user = req.body
